@@ -4,8 +4,11 @@ import com.exception.demo.entity.BaseResult;
 import com.exception.demo.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -17,6 +20,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
+
+    @ModelAttribute
+    public BaseResult baseResult() {
+        System.out.println("============应用到所有@RequestMapping注解方法，在其执行之前把返回值放入Model");
+        return new BaseResult();
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        System.out.println("============应用到所有@RequestMapping注解方法，在其执行之前初始化数据绑定器");
+    }
+
 
     /**
      * 处理所有不可知的异常

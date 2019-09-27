@@ -24,6 +24,10 @@ public class HelloServiceTest {
         long currentTimeMillis = System.currentTimeMillis();
         //模拟1000个线程并发
         CountDownLatchUtil countDownLatchUtil = new CountDownLatchUtil(1000);
+
+        /**
+         * 函数式编程，自动实现 MyFunctionalInterface 接口，并实现了其中的run方法。
+         */
         countDownLatchUtil.latch(() -> {
             helloService.sayHello(currentTimeMillis);
         });

@@ -48,6 +48,9 @@ public class CountDownLatchUtil {
         executorService.shutdown();
     }
 
+    /**
+     * 函数式编程接口，只能有一个抽象方法。
+     */
     @FunctionalInterface
     public interface MyFunctionalInterface {
         void run();

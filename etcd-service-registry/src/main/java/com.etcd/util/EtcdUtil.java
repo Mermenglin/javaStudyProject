@@ -30,6 +30,8 @@ public class EtcdUtil {
     @Autowired
     private Environment env;
 
+    private boolean registFlag = false;
+
     private final String serverName = env.getProperty("serverName"); // 自定义的服务名字，我定义成roomServer
 
     private final String dirString = "/roomServerList";
@@ -57,7 +59,7 @@ public class EtcdUtil {
                     .putDir(etcdKey + "_" + env.getProperty("serverIp") + "_" + env.getProperty("serverPort"))
                     .ttl(60).send();
             p.get(); // 加上这个get()用来保证设置完成，走下一步，get会阻塞，由上面client的retry策略决定阻塞的方式
-
+            this.registFlag = true;
             new Thread(new GuardEtcd()).start(); // 启动一个守护线程来定时刷新节点
 
         } catch (Exception e) {
@@ -73,6 +75,7 @@ public class EtcdUtil {
                             etcdKey + "_" + env.getProperty("serverIp") + "_" + env.getProperty("serverPort"))
                     .recursive().send();
             p.get();
+            this.registFlag = false;
             etcdClient.close();
         } catch (IOException | EtcdException | EtcdAuthenticationException | TimeoutException e) {
             log.error(e.getMessage());
@@ -83,7 +86,7 @@ public class EtcdUtil {
 
         @Override
         public void run() {
-            while (true) {
+            while (registFlag) {
                 try {
                     Thread.sleep(40 * 1000l);
 

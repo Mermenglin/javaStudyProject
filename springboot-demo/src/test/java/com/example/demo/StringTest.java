@@ -12,6 +12,20 @@ import java.util.Map;
 public class StringTest {
 
     @Test
+    public void string2Integer(){
+        String i = "70";
+        System.out.println(Integer.valueOf(i));
+
+        String s = "70.50";
+        System.out.println(Float.valueOf(s));
+        System.out.println(Double.valueOf(s));
+//        System.out.println(Integer.valueOf(s));
+        Float aFloat = Float.valueOf(s);
+        Integer a = aFloat.intValue();
+        System.out.println(a);
+    }
+
+    @Test
     public void test1(){
         String link = "http://webtest.51xcm.cn/xinchao/index.html?c=XAZkV92";
         System.out.println(link.substring(link.lastIndexOf("?c=") + 3));

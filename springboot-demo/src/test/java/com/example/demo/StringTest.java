@@ -11,6 +11,15 @@ import java.util.Map;
  */
 public class StringTest {
 
+    public static void main(String[] args) {
+        int a, b, sum;
+        a = 123;
+        b = 456;
+        sum = a + b;
+        System.out.printf("sum is %d\n", sum);
+        return;
+    }
+
     @Test
     public void string2Integer(){
         String i = "70";
@@ -29,6 +38,12 @@ public class StringTest {
     public void test1(){
         String link = "http://webtest.51xcm.cn/xinchao/index.html?c=XAZkV92";
         System.out.println(link.substring(link.lastIndexOf("?c=") + 3));
+
+
+        String statisticsTime = "2019-10-01";
+        statisticsTime = statisticsTime.substring(0, statisticsTime.lastIndexOf("-"));
+
+        System.out.println(statisticsTime);
     }
 
     @Test

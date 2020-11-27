@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mmling</groupId>
-    <artifactId>private</artifactId>
+    <artifactId>studyprivate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>demo</name>
@@ -26,6 +26,10 @@
         <module>springboot-rabbitmq-consumer</module>
         <module>springboot-redis</module>
         <module>etcd-service-registry</module>
+        <module>examination-java</module>
+        <module>algorithmStudy</module>
+        <module>mybatisRedisCache</module>
+        <module>cassandra-demo</module>
     </modules>
 
 </project>

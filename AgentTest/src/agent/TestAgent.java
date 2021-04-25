@@ -17,7 +17,7 @@ public class TestAgent {
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("premain");
         System.out.println(agentArgs);
-//        customLogic(inst);
+        customLogic(inst);
     }
 
     public static void premain(String agentArgs) {
@@ -47,6 +47,7 @@ public class TestAgent {
         Class[] classes = inst.getAllLoadedClasses();
         for (Class cls : classes) {
             System.out.println(cls.getName());
+            break;
         }
     }
 }

@@ -40,9 +40,10 @@ public class RedisUtil {
 
     /**
      * 单机、主从redis可用redis分布式锁
+     *
      * @param lockKey
-     * @param clientId  UUID
-     * @param seconds   最长锁时间
+     * @param clientId UUID
+     * @param seconds  最长锁时间
      * @return
      */
     public Boolean getLock(String lockKey, String clientId, long seconds) {

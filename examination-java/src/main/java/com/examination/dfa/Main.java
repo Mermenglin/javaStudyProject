@@ -75,7 +75,7 @@ public class Main {
             word = txt.charAt(i);
             nowMap = (Map) nowMap.get(word);
             if (nowMap != null) {
-                matchFlag ++;
+                matchFlag++;
                 if ("1".equals(nowMap.get("isEnd"))) {
                     flag = true;
                     if (/*minMatchType*/ 1 == matchType) {

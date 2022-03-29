@@ -9,7 +9,7 @@ import org.junit.Test;
 public class IntegerTest {
 
     @Test
-    public void nullAddNum(){
+    public void nullAddNum() {
 //        Integer i = null;       // throw java.lang.NullPointerException
         Integer i = 0;
         Integer j = 10;

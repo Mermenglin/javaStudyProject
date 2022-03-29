@@ -30,7 +30,7 @@ public class DelayOrderComponent {
     private static DelayQueue<OrderDelay> queue = new DelayQueue<>();
 
     @PostConstruct
-    public void init(){
+    public void init() {
         List<Order> orders = orderService.listNotPayOrder();
         for (Order o : orders) {
             OrderDelay orderDelay = new OrderDelay(o.getId(), o.getExpireTime().getTime());
@@ -44,14 +44,18 @@ public class DelayOrderComponent {
         Executors.newSingleThreadExecutor().execute(new OrderExecutionTimer(queue, orderService));
     }
 
-    /**加入延迟消息队列**/
-    public boolean addToOrderDelayQueue(OrderDelay orderDelay){
+    /**
+     * 加入延迟消息队列
+     **/
+    public boolean addToOrderDelayQueue(OrderDelay orderDelay) {
         return queue.add(orderDelay);
     }
 
 
-    /**从延迟队列中移除**/
-    public void removeToOrderDelayQueue(OrderDelay orderDelay){
+    /**
+     * 从延迟队列中移除
+     **/
+    public void removeToOrderDelayQueue(OrderDelay orderDelay) {
         queue.remove(orderDelay);
     }
 }

@@ -6,7 +6,7 @@ package com.java8.demo;
  */
 public interface DefaultMethodInterface1 {
 
-    default void printHello(){
+    default void printHello() {
         System.out.println("DefaultMethodInterface1 say hello");
     }
 }

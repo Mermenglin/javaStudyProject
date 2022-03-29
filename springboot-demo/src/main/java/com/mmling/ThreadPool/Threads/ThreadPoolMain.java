@@ -12,12 +12,12 @@ public class ThreadPoolMain {
     public static void main(String[] args) {
         TestThreadPoolManager testThreadPoolManager = new TestThreadPoolManager();
 
-        for (int i = 0; i < 10; i ++) {
+        for (int i = 0; i < 10; i++) {
             testThreadPoolManager.addOrders("orderId:  " + i);
 //            System.out.println("QueueSize:   " + testThreadPoolManager.getQueueSize());
         }
 
-        Timer timer=new Timer();
+        Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {

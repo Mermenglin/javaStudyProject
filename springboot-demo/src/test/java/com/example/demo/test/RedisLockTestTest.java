@@ -17,7 +17,7 @@ public class RedisLockTestTest {
 
     @Test
     public void setEx() {
-        boolean result = redisLockTest.setEx("10","12", 10);
+        boolean result = redisLockTest.setEx("10", "12", 10);
         System.out.println("---------------hello put  : " + result);
     }
 
@@ -28,7 +28,7 @@ public class RedisLockTestTest {
     }
 
     @Test
-    public void set(){
+    public void set() {
         Jedis jedis = new Jedis("127.0.0.1", 6379);    // 设置连接属性
 //        jedis.auth("password");     // 设置连接密码
         String set = jedis.set("13", "12", "NX", "PX", 10 * 1000);

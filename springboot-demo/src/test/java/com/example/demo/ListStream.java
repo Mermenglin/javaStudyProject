@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class ListStream {
 
     @Test
-    public void testFilter(){
+    public void testFilter() {
 
         List<ThirdLoginVo> list = new ArrayList<ThirdLoginVo>();
         ThirdLoginVo t1 = new ThirdLoginVo();

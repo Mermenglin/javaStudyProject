@@ -19,7 +19,7 @@ public class RedissonProperties {
 
     private int connectionPoolSize = 64;
 
-    private int connectionMinimumIdleSize=10;
+    private int connectionMinimumIdleSize = 10;
 
     private int slaveConnectionPoolSize = 250;
 

@@ -17,7 +17,7 @@ public class BaseResult<T> {
     private T data;
 
     public BaseResult() {
-        
+
     }
 
     public BaseResult(T data) {

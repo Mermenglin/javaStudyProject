@@ -12,18 +12,18 @@ public class ApplicationContextHolder implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+        ApplicationContextHolder.applicationContext = applicationContext;
     }
 
-    public static ApplicationContext getApplicationContext(){
+    public static ApplicationContext getApplicationContext() {
         return applicationContext;
     }
 
-    public static <T> T getBean(Class<T> clazz){
+    public static <T> T getBean(Class<T> clazz) {
         return applicationContext.getBean(clazz);
     }
 
-    public static <T> T getBean(String name){
+    public static <T> T getBean(String name) {
         return (T) applicationContext.getBean(name);
     }
 }

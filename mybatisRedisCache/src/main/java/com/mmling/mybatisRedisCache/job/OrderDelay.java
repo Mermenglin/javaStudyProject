@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 订单延时类
+ *
  * @author meimengling
  * @version 1.0
  * @date 2020-4-16 10:04
@@ -40,6 +41,7 @@ public class OrderDelay implements Delayed {
 
     /**
      * 过期时间减去当前时间
+     *
      * @param unit
      * @return
      */
@@ -50,6 +52,7 @@ public class OrderDelay implements Delayed {
 
     /**
      * 根据订单过期时间排序
+     *
      * @param delayed
      * @return
      */
@@ -60,6 +63,6 @@ public class OrderDelay implements Delayed {
 
     @Override
     public boolean equals(Object obj) {
-        return this.id.equals(((OrderDelay)obj).id);
+        return this.id.equals(((OrderDelay) obj).id);
     }
 }

@@ -96,10 +96,10 @@ public class LikedServiceImpl implements LikedService {
         List<UserLike> list = redisService.getLikedDataFromRedis();
         for (UserLike like : list) {
             UserLike ul = getByLikedUserIdAndLikedPostId(like.getLikedUserId(), like.getLikedPostId());
-            if (ul == null){
+            if (ul == null) {
                 //没有记录，直接存入
                 save(like);
-            }else{
+            } else {
                 //有记录，需要更新
                 ul.setStatus(like.getStatus());
                 save(ul);

@@ -8,7 +8,7 @@ import com.annotation.demo.annotation.Constant;
  */
 public class User {
 
-    @Constant(message = "verson只能为1.0",value="1.0")
+    @Constant(message = "verson只能为1.0", value = "1.0")
     String version;
 
 }

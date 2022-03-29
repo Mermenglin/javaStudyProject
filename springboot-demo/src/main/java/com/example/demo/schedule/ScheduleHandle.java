@@ -18,7 +18,7 @@ public class ScheduleHandle {
 
     private final Logger log = LoggerFactory.getLogger(ScheduleHandle.class);
 
-    private List<Integer> index = Arrays.asList(8*1000, 3*1000, 6*1000, 2*1000, 2*1000);
+    private List<Integer> index = Arrays.asList(8 * 1000, 3 * 1000, 6 * 1000, 2 * 1000, 2 * 1000);
 
     private AtomicInteger atomicInteger = new AtomicInteger(0);
 
@@ -36,7 +36,7 @@ public class ScheduleHandle {
     @Scheduled(cron = "*/5 * * * * *")
     private void cora() throws InterruptedException {
         int i = atomicInteger.get();
-        if (i < 5){
+        if (i < 5) {
             Integer sleepTime = index.get(i);
             log.info("第{}任务开始执行，执行时间为{}ms", i, sleepTime);
             Thread.sleep(sleepTime);

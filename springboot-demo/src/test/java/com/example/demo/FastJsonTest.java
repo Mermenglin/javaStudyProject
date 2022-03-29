@@ -12,7 +12,7 @@ import org.junit.Test;
 public class FastJsonTest {
 
     @Test
-    public void test(){
+    public void test() {
         String s = "{\"phone\":\"156444564111\"}";
         ThirdLoginVo thirdLoginVo = JSON.parseObject(s, ThirdLoginVo.class);
         System.out.println(thirdLoginVo);

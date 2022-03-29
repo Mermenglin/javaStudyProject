@@ -46,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void cancelOrder(Long id){
+    public void cancelOrder(Long id) {
         Order order = getOrderById(id);
         OrderDelay orderDelay = new OrderDelay(id);
         if (order != null && OrderStutus.UNPAID.getCode().equals(order.getStatus())) {
@@ -65,7 +65,7 @@ public class OrderServiceImpl implements OrderService {
     public Order add(Order order) {
         orderMapper.add(order);
         order = orderMapper.getOrderById(order.getId());
-        OrderDelay orderDelay = new OrderDelay(order.getId(),order.getExpireTime().getTime());
+        OrderDelay orderDelay = new OrderDelay(order.getId(), order.getExpireTime().getTime());
         delayOrderComponent.addToOrderDelayQueue(orderDelay);
         log.info("新增订单，order = {}", order);
         return order;

@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class User {
 
-    public User(){
+    public User() {
 
     }
 

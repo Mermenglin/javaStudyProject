@@ -32,10 +32,10 @@ public class RedissonController {
     private static int threadNum = 10;
 
     @GetMapping("/test")
-    public void lock(){
+    public void lock() {
         // 计数器
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        for (int i = 0; i < threadNum; i ++) {
+        for (int i = 0; i < threadNum; i++) {
             MyRunnable myRunnable = new MyRunnable(countDownLatch);
             Thread myThread = new Thread(myRunnable);
             myThread.start();
@@ -49,16 +49,18 @@ public class RedissonController {
          * 计数器
          */
         final CountDownLatch countDownLatch;
+
         public MyRunnable(CountDownLatch countDownLatch) {
             this.countDownLatch = countDownLatch;
         }
+
         @Override
         public void run() {
             try {
                 // 阻塞当前线程，直到计时器的值为0
                 countDownLatch.await();
             } catch (InterruptedException e) {
-                log.error(e.getMessage(),e);
+                log.error(e.getMessage(), e);
             }
             // 无锁操作
             testCount();
@@ -80,7 +82,7 @@ public class RedissonController {
 
     private void testCount() {
         count--;
-        log.info("count值："+count);
+        log.info("count值：" + count);
     }
 
 }

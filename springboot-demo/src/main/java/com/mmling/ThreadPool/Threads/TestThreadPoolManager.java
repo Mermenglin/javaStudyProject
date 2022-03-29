@@ -27,8 +27,10 @@ public class TestThreadPoolManager {
             TimeUnit.SECONDS, new ArrayBlockingQueue<>(WORK_QUEUE_SIZE));
 
 
-    /**将任务加入订单线程池*/
-    public void addOrders(String orderId){
+    /**
+     * 将任务加入订单线程池
+     */
+    public void addOrders(String orderId) {
         System.out.println("此订单准备添加到线程池，订单号：" + orderId);
 
         BusinessThread businessThread = new BusinessThread(orderId);
@@ -38,6 +40,7 @@ public class TestThreadPoolManager {
 
     /**
      * 查询线程队列中还有多少任务
+     *
      * @return
      */
     public long getQueueSize() {
@@ -60,7 +63,7 @@ public class TestThreadPoolManager {
 }
 
 //@Component
-class BusinessThread implements Runnable{
+class BusinessThread implements Runnable {
 
     private String acceptStr;
 
@@ -71,7 +74,7 @@ class BusinessThread implements Runnable{
     @Override
     public void run() {
         //业务操作
-        System.out.println("多线程已经处理订单插入系统，订单号："+acceptStr);
+        System.out.println("多线程已经处理订单插入系统，订单号：" + acceptStr);
 
         try {
             Thread.sleep(1000);

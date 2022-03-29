@@ -23,7 +23,7 @@ public class RabbitTest {
 
     @Test
     public void test() {
-        for (int i = 0; i < 10; i ++) {
+        for (int i = 0; i < 10; i++) {
             String message = "Hello测试信息:" + i;
             amqpService.convertAndSend(message);
         }

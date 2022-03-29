@@ -51,7 +51,7 @@ public class Order {
     public Date getExpireTime() {
         Calendar newTime = Calendar.getInstance();
         newTime.setTime(createTime);
-        newTime.add(Calendar.MINUTE,25);//日期加10秒
+        newTime.add(Calendar.MINUTE, 25);//日期加10秒
 
         expireTime = newTime.getTime();
         return expireTime;

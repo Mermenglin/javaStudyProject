@@ -6,11 +6,11 @@ package com.java8.demo;
  */
 public interface DefaultMethodInterface2 {
 
-    default void printHello(){
+    default void printHello() {
         System.out.println("DefaultMethodInterface2 say hello!");
     }
 
-    static void printWhy(){
+    static void printWhy() {
         System.out.println("DefaultMethodInterface2 say why?");
     }
 }

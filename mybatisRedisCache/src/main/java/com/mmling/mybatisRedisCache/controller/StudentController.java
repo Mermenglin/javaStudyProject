@@ -33,16 +33,17 @@ public class StudentController {
     }
 
     @PostMapping("update")
-    public int updateStudent(@RequestBody Student student){
+    public int updateStudent(@RequestBody Student student) {
         return studentService.update(student).getId();
     }
 
     @PostMapping("add")
-    public int insertStudent(@RequestBody Student student){
+    public int insertStudent(@RequestBody Student student) {
         return studentService.insert(student).getId();
     }
+
     @DeleteMapping("delete")
-    public Boolean deleteStudent(Integer id){
+    public Boolean deleteStudent(Integer id) {
         return studentService.deleteById(id);
     }
 }

@@ -21,12 +21,12 @@ public class RedisDemoController {
     RedisDemoService redisDemoService;
 
     @PostMapping("/incr")
-    public Long incr(@RequestParam String key){
+    public Long incr(@RequestParam String key) {
         return redisDemoService.incr(key);
     }
 
     @PostMapping("/get")
-    public String get(@RequestParam String key){
+    public String get(@RequestParam String key) {
         return redisDemoService.get(key);
     }
 

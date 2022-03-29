@@ -1,9 +1,11 @@
 package com.util;
 /**
  * AES for java AES/ECB/PKCS5Padding
- * @author kevin(askyiwang@gmail.com)
+ *
+ * @author kevin(askyiwang @ gmail.com)
  * @date 2016年10月25日22:27:21
  */
+
 import sun.misc.BASE64Decoder;
 
 import javax.crypto.Cipher;
@@ -19,6 +21,7 @@ public class Security {
     private static final String DEFUALT_ENCODING = "UTF8";
     private String encKey;
     private String signKey;
+
     /**
      * run test
      *
@@ -35,13 +38,13 @@ public class Security {
         try {
             System.out.println("签名:" + sec.sign(content));
             System.out.println("验签:" + sec.verify(content, signContent));
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
 
-    public Security(String encKey, String signKey){
-        if(encKey != null && !"".equals(encKey) && signKey != null && !"".equals(signKey)){
+    public Security(String encKey, String signKey) {
+        if (encKey != null && !"".equals(encKey) && signKey != null && !"".equals(signKey)) {
             this.encKey = encKey;
             this.signKey = signKey;
         }
@@ -49,11 +52,11 @@ public class Security {
 
     /**
      * 签名
-     * @param content 	待签内容
-     * @return			签名
+     * @param content    待签内容
+     * @return 签名
      * @throws Exception
      */
-    public String sign(String content) throws Exception{
+    public String sign(String content) throws Exception {
         Mac mac = Mac.getInstance("HmacSHA256");
         byte[] secretByte = signKey.getBytes(DEFUALT_ENCODING);
         byte[] dataBytes = content.getBytes(DEFUALT_ENCODING);
@@ -62,14 +65,15 @@ public class Security {
         byte[] doFinal = mac.doFinal(dataBytes);
         return parseByte2HexStr(doFinal);
     }
+
     /**
      * 验签
-     * @param content 	签名内容
-     * @param sign		待验签名
-     * @return			true：合法； false：非法
+     * @param content    签名内容
+     * @param sign        待验签名
+     * @return true：合法； false：非法
      * @throws Exception
      */
-    public boolean verify(String content, String sign) throws Exception{
+    public boolean verify(String content, String sign) throws Exception {
         return sign.equals(sign(content));
     }
 
@@ -80,15 +84,15 @@ public class Security {
      * @return HexString
      */
 
-    public String encrypt(String input, String key){
+    public String encrypt(String input, String key) {
 
         byte[] crypted = null;
-        try{
+        try {
             SecretKeySpec skey = new SecretKeySpec(key.getBytes(), ALGORITHM);
             Cipher cipher = Cipher.getInstance(TRANSFORMATION);
             cipher.init(Cipher.ENCRYPT_MODE, skey);
             crypted = cipher.doFinal(input.getBytes());
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return parseByte2HexStr(crypted);
@@ -123,10 +127,10 @@ public class Security {
 
         if (hexStr.length() < 1)
             return null;
-        byte[] result = new byte[hexStr.length()/2];
-        for (int i = 0;i< hexStr.length()/2; i++) {
-            int high = Integer.parseInt(hexStr.substring(i*2, i*2+1), 16);
-            int low = Integer.parseInt(hexStr.substring(i*2+1, i*2+2), 16);
+        byte[] result = new byte[hexStr.length() / 2];
+        for (int i = 0; i < hexStr.length() / 2; i++) {
+            int high = Integer.parseInt(hexStr.substring(i * 2, i * 2 + 1), 16);
+            int low = Integer.parseInt(hexStr.substring(i * 2 + 1, i * 2 + 2), 16);
             result[i] = (byte) (high * 16 + low);
         }
         return result;
@@ -144,17 +148,17 @@ public class Security {
      * @param String key   解密的key
      * @return String
      */
-    public String decrypt(String input, String key){
+    public String decrypt(String input, String key) {
 
         byte[] output = null;
 
-        try{
+        try {
             SecretKeySpec skey = new SecretKeySpec(base642Byte(key), ALGORITHM);
             Cipher cipher = Cipher.getInstance(TRANSFORMATION);
             cipher.init(Cipher.DECRYPT_MODE, skey);
             output = cipher.doFinal(base642Byte(input));
 
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return new String(output);

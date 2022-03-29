@@ -20,6 +20,7 @@
     </properties>
 
     <modules>
+        <module>springboot-schedule</module>
         <module>springboot-demo</module>
         <module>springboot-rabbitmq1</module>
         <module>springboot-rabbitmq-producer</module>
@@ -30,6 +31,9 @@
         <module>algorithmStudy</module>
         <module>mybatisRedisCache</module>
         <module>cassandra-demo</module>
+        <module>basic-java</module>
+        <module>poi-test</module>
+        <module>mockito-demo</module>
     </modules>
 
 </project>

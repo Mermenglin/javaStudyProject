@@ -60,7 +60,7 @@ public class RedisServiceImpl implements RedisService {
     public List<UserLike> getLikedDataFromRedis() {
         Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(RedisKeyUtils.MAP_KEY_USER_LIKED, ScanOptions.NONE);
         List<UserLike> list = new ArrayList<>();
-        while (cursor.hasNext()){
+        while (cursor.hasNext()) {
             Map.Entry<Object, Object> entry = cursor.next();
             String key = (String) entry.getKey();
             //分离出 likedUserId，likedPostId
@@ -84,10 +84,10 @@ public class RedisServiceImpl implements RedisService {
     public List<LikedCountDTO> getLikedCountFromRedis() {
         Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(RedisKeyUtils.MAP_KEY_USER_LIKED_COUNT, ScanOptions.NONE);
         List<LikedCountDTO> list = new ArrayList<>();
-        while (cursor.hasNext()){
+        while (cursor.hasNext()) {
             Map.Entry<Object, Object> map = cursor.next();
             //将点赞数量存储在 LikedCountDTO
-            String key = (String)map.getKey();
+            String key = (String) map.getKey();
             LikedCountDTO dto = new LikedCountDTO(key, (Integer) map.getValue());
             list.add(dto);
             //从Redis中删除这条记录

@@ -46,7 +46,8 @@ public class StringUtils {
 
 
     static final char[] chars = "0123456789ABCDEF".toCharArray();
-    public static int str2HexInt(String str){
+
+    public static int str2HexInt(String str) {
         char[] chars1 = str.toCharArray();
         int result = 0;
         for (int i = 0; i < chars1.length; i++) {

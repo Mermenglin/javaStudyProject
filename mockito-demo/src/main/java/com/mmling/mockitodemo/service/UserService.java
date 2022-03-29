@@ -9,5 +9,5 @@ import com.mmling.mockitodemo.entity.User;
 public interface UserService {
     User getUser(Long id);
 
-    User edit(User user);
+    User edit(User user1);
 }

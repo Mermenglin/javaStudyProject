@@ -17,6 +17,7 @@ public class RedisLockUtil {
 
     /**
      * 加锁
+     *
      * @param lockKey
      * @return
      */
@@ -27,6 +28,7 @@ public class RedisLockUtil {
 
     /**
      * 释放锁
+     *
      * @param lockKey
      */
 
@@ -37,6 +39,7 @@ public class RedisLockUtil {
 
     /**
      * 释放锁
+     *
      * @param lock
      */
 
@@ -47,6 +50,7 @@ public class RedisLockUtil {
 
     /**
      * 带超时的锁
+     *
      * @param lockKey
      * @param timeout 超时时间   单位：秒
      */
@@ -58,20 +62,22 @@ public class RedisLockUtil {
 
     /**
      * 带超时的锁
+     *
      * @param lockKey
-     * @param unit 时间单位
+     * @param unit    时间单位
      * @param timeout 超时时间
      */
 
-    public static RLock lock(String lockKey, int timeout, TimeUnit unit ) {
+    public static RLock lock(String lockKey, int timeout, TimeUnit unit) {
         return redisLocker.lock(lockKey, unit, timeout);
     }
 
 
     /**
      * 尝试获取锁
+     *
      * @param lockKey
-     * @param waitTime 最多等待时间
+     * @param waitTime  最多等待时间
      * @param leaseTime 上锁后自动释放锁时间
      * @return
      */
@@ -83,9 +89,10 @@ public class RedisLockUtil {
 
     /**
      * 尝试获取锁
+     *
      * @param lockKey
-     * @param unit 时间单位
-     * @param waitTime 最多等待时间
+     * @param unit      时间单位
+     * @param waitTime  最多等待时间
      * @param leaseTime 上锁后自动释放锁时间
      * @return
      */
@@ -101,7 +108,7 @@ public class RedisLockUtil {
      * @param name
      * @return
      */
-    public static RCountDownLatch getCountDownLatch(String name){
+    public static RCountDownLatch getCountDownLatch(String name) {
         return redisLocker.getCountDownLatch(name);
     }
 
@@ -112,7 +119,7 @@ public class RedisLockUtil {
      * @param name
      * @return
      */
-    public static RSemaphore getSemaphore(String name){
+    public static RSemaphore getSemaphore(String name) {
         return redisLocker.getSemaphore(name);
     }
 }

@@ -11,9 +11,9 @@ import java.util.UUID;
  */
 public interface PersonService {
 
-	Person create(Person Person);
+    Person create(Person Person);
 
-	List<Person> getByAge(int age);
+    List<Person> getByAge(int age);
 
-	void deleteById(Integer id);
+    void deleteById(Integer id);
 }

@@ -22,7 +22,8 @@ import lombok.experimental.Accessors;
 @Data
 public class User {
 
-    @NonNull private String name;
+    @NonNull
+    private String name;
 
     private String age;
 

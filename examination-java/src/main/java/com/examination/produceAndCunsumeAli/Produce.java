@@ -15,7 +15,7 @@ public class Produce implements Runnable {
 
     private int num;
 
-    public Produce (BlockingQueue<Integer> queues) {
+    public Produce(BlockingQueue<Integer> queues) {
         this.queues = queues;
         this.num = 1;
     }
@@ -25,7 +25,7 @@ public class Produce implements Runnable {
         while (num < 101) {
             int missecond = randomMi.nextInt(180) + 10;
             try {
-                queues.put(num ++);
+                queues.put(num++);
                 Thread.sleep(missecond);
             } catch (InterruptedException e) {
                 e.printStackTrace();

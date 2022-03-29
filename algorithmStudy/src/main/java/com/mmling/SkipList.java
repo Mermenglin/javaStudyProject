@@ -48,7 +48,7 @@ public class SkipList<K extends Comparable<K>, V> {
 
     private Random random = new Random(System.currentTimeMillis());
 
-    public SkipList(){
+    public SkipList() {
         createNewLevel();
     }
 
@@ -60,7 +60,7 @@ public class SkipList<K extends Comparable<K>, V> {
         insertNode(newNode);
     }
 
-    private void insertNode(Node<K,V> newNode) {
+    private void insertNode(Node<K, V> newNode) {
         Node<K, V> curNode = findNode(newNode.getKey());
         if (curNode.getKey() == null) {
             insertNode(curNode, newNode);
@@ -72,16 +72,16 @@ public class SkipList<K extends Comparable<K>, V> {
         }
 
         int currentLevel = 1;
-        Node<K,V> oldTop = newNode;
-        while(random.nextInt(100) < 35) {
+        Node<K, V> oldTop = newNode;
+        while (random.nextInt(100) < 35) {
             Node<K, V> newTop = new Node<>(newNode.getKey(), null);
             if (currentLevel >= level) {
                 createNewLevel();
             }
-            while (curNode.getPre()!=null && curNode.getUp()==null) {
+            while (curNode.getPre() != null && curNode.getUp() == null) {
                 curNode = curNode.getPre();
             }
-            if (curNode.getUp()==null) {
+            if (curNode.getUp() == null) {
                 continue;
             }
             curNode = curNode.getUp();
@@ -100,8 +100,8 @@ public class SkipList<K extends Comparable<K>, V> {
         }
     }
 
-    private void insertNode(Node<K,V> curNode, Node<K,V> newNode) {
-        Node<K,V> curNodeNext = curNode.getNext();
+    private void insertNode(Node<K, V> curNode, Node<K, V> newNode) {
+        Node<K, V> curNodeNext = curNode.getNext();
         newNode.setNext(curNodeNext);
         if (curNodeNext != null) {
             curNodeNext.setPre(newNode);
@@ -121,14 +121,13 @@ public class SkipList<K extends Comparable<K>, V> {
     }
 
     /**
-     *
      * @param key
      * @return
      */
-    private Node<K,V> findNode(K key) {
+    private Node<K, V> findNode(K key) {
         Node<K, V> curNode = this.head;
-        for( ; ; ) {
-            while(curNode.getNext()!=null && curNode.getNext().getKey().compareTo(key) <= 0) {
+        for (; ; ) {
+            while (curNode.getNext() != null && curNode.getNext().getKey().compareTo(key) <= 0) {
                 curNode = curNode.getNext();
             }
             if (curNode.getDown() != null) {

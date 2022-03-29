@@ -20,8 +20,8 @@ public class NumberTest {
         List<Integer> list = new ArrayList<>();
 
         while (true) {
-            list.add(a%10);
-            a=a/10;//降位
+            list.add(a % 10);
+            a = a / 10;//降位
             if (a == 0) {
                 break;
             }
@@ -35,7 +35,7 @@ public class NumberTest {
             }
         }
         int result = 0;
-        for (int j = list.size() -1 ; j >= 0; j--) {
+        for (int j = list.size() - 1; j >= 0; j--) {
             if (i == list.size() && j == list.size() - 1) {
                 result = 5;
             }

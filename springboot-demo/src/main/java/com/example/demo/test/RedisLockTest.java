@@ -22,12 +22,13 @@ public class RedisLockTest {
     /**
      * redisTemplate设置值，使用的是setEX，不管redis中是否有该key值，都会设置成功，
      * 会覆盖之前的value，所以慎用。
+     *
      * @param key
      * @param value
      * @param expireTime 超时时间，单位是秒
      * @return
      */
-    public  boolean setEx(String key, String value, int expireTime) {
+    public boolean setEx(String key, String value, int expireTime) {
         boolean result = redisTemplate.execute((RedisCallback<Boolean>) connection -> {
             connection.setEx(key.getBytes(), expireTime, value.getBytes());
             return true;
@@ -37,6 +38,7 @@ public class RedisLockTest {
 
     /**
      * redisTemplate设置值，使用的是 setNX，当redis中有该key，则设置失败
+     *
      * @param key
      * @param value
      * @return
@@ -49,12 +51,13 @@ public class RedisLockTest {
 
     /**
      * jedis 方式设置值，并同时设置超时时间，可用于分布式锁
+     *
      * @param key
      * @param value
-     * @param expireTime    超时时间，单位是毫秒
+     * @param expireTime 超时时间，单位是毫秒
      * @return
      */
-    public boolean set(String key, String value, int expireTime){
+    public boolean set(String key, String value, int expireTime) {
         Jedis jedis = new Jedis();
 //        jedis.auth("password");     // 设置连接密码
         String set = jedis.set(key, value, "NX", "PX", expireTime);
@@ -64,7 +67,7 @@ public class RedisLockTest {
         return false;
     }
 
-    public void put(String key, String value){
+    public void put(String key, String value) {
         redisTemplate.opsForValue().set(key, value);
     }
 }

@@ -39,7 +39,7 @@ public class UserDTO {
         @Override
         public User convert(UserDTO userDTO) {
             User user = new User();
-            BeanUtils.copyProperties(userDTO,user);
+            BeanUtils.copyProperties(userDTO, user);
             user.setName(userDTO.getUserName());
             return user;
         }
@@ -47,7 +47,7 @@ public class UserDTO {
         @Override
         public UserDTO convertFor(User user) {
             UserDTO userDTO = new UserDTO();
-            BeanUtils.copyProperties(user,userDTO);
+            BeanUtils.copyProperties(user, userDTO);
             userDTO.setUserName(user.getName());
             return userDTO;
         }

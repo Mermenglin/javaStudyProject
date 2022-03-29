@@ -17,7 +17,7 @@ public enum OrderStutus {
 
     private String msg;
 
-    OrderStutus(Integer code, String msg){
+    OrderStutus(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }

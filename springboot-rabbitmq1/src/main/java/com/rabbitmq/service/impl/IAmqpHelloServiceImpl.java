@@ -13,6 +13,6 @@ import org.springframework.stereotype.Service;
 public class IAmqpHelloServiceImpl implements IAmqpHelloService {
     @Override
     public void receiveHelloQueue(String message) {
-        log.info("IAmqpHelloServiceImpl---业务实现类消费"+message);
+        log.info("IAmqpHelloServiceImpl---业务实现类消费" + message);
     }
 }

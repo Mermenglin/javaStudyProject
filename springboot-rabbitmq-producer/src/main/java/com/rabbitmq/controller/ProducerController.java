@@ -25,9 +25,9 @@ public class ProducerController {
     public void send() {
         // JSON 格式传输
         template.setMessageConverter(new Jackson2JsonMessageConverter());
-        for(int n=0;n<100;n++){
-            template.convertAndSend(BindingConfig.Exchange_NAME,BindingConfig.RoutingKey1,"I'm the first queue!   "+String.valueOf(n),getCorrelationData());
-            template.convertAndSend(BindingConfig.Exchange_NAME,BindingConfig.RoutingKey2,"I'm the second queue!  "+String.valueOf(n),getCorrelationData());
+        for (int n = 0; n < 100; n++) {
+            template.convertAndSend(BindingConfig.Exchange_NAME, BindingConfig.RoutingKey1, "I'm the first queue!   " + String.valueOf(n), getCorrelationData());
+            template.convertAndSend(BindingConfig.Exchange_NAME, BindingConfig.RoutingKey2, "I'm the second queue!  " + String.valueOf(n), getCorrelationData());
         }
     }
 
@@ -35,14 +35,14 @@ public class ProducerController {
     public void sendUser() {
         // JSON 格式传输
         template.setMessageConverter(new Jackson2JsonMessageConverter());
-        for(int n=0;n<100;n++){
+        for (int n = 0; n < 100; n++) {
             User user = new User("小明" + n, n);
-            template.convertAndSend(BindingConfig.Exchange_NAME,BindingConfig.RoutingKey1,user,getCorrelationData());
-            template.convertAndSend(BindingConfig.Exchange_NAME,BindingConfig.RoutingKey2,user,getCorrelationData());
+            template.convertAndSend(BindingConfig.Exchange_NAME, BindingConfig.RoutingKey1, user, getCorrelationData());
+            template.convertAndSend(BindingConfig.Exchange_NAME, BindingConfig.RoutingKey2, user, getCorrelationData());
         }
     }
 
-    private CorrelationData getCorrelationData(){
+    private CorrelationData getCorrelationData() {
         return new CorrelationData(UUID.randomUUID().toString());
     }
 }

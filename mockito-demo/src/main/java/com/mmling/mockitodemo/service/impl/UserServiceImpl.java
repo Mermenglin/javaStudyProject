@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User edit(User user) {
-        return userDao.edit(user);
+    public User edit(User user1) {
+        return userDao.edit(user1);
     }
 }

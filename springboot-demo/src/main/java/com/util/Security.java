@@ -24,7 +24,6 @@ public class Security {
 
     /**
      * run test
-     *
      */
     public static void main(String[] args) {
 
@@ -52,7 +51,8 @@ public class Security {
 
     /**
      * 签名
-     * @param content    待签内容
+     *
+     * @param content 待签内容
      * @return 签名
      * @throws Exception
      */
@@ -68,8 +68,9 @@ public class Security {
 
     /**
      * 验签
-     * @param content    签名内容
-     * @param sign        待验签名
+     *
+     * @param content 签名内容
+     * @param sign    待验签名
      * @return true：合法； false：非法
      * @throws Exception
      */
@@ -79,6 +80,7 @@ public class Security {
 
     /**
      * 加密
+     *
      * @param String input 加密的字符串
      * @param String key   解密的key
      * @return HexString
@@ -101,6 +103,7 @@ public class Security {
 
     /**
      * 将二进制转换成16进制
+     *
      * @param buf
      * @return
      */
@@ -120,6 +123,7 @@ public class Security {
 
     /**
      * 将16进制转换为二进制
+     *
      * @param hexStr
      * @return
      */
@@ -144,6 +148,7 @@ public class Security {
 
     /**
      * 解密
+     *
      * @param String input 解密的字符串
      * @param String key   解密的key
      * @return String

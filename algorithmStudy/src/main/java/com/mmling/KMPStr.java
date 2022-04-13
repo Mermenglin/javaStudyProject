@@ -3,7 +3,7 @@ package com.mmling;
 /**
  * 理解KMP算法：
  * http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html
- *
+ * <p>
  * 代码参考：
  * https://blog.sengxian.com/algorithms/kmp
  *
@@ -22,7 +22,7 @@ public class KMPStr {
 
     private static int findStr(String s, String match) {
         int[] PartialMatchTable = process(match.toCharArray());
-        int i ,j = 0;
+        int i, j = 0;
         char[] schar = s.toCharArray();
         char[] mchar = match.toCharArray();
         // 待匹配串循环

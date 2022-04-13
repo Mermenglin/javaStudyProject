@@ -3,7 +3,8 @@
 <mapper namespace="com.mmling.mybatisRedisCache.dao.OrderMapper">
 
     <select id="listPayStutsOrder" resultType="com.mmling.mybatisRedisCache.entity.Order">
-        select id, user_name userName, amount, status, create_time createTime, payment_time paymentTime from t_ms_order where status = #{status}
+        select id, user_name userName, amount, status, create_time createTime, payment_time paymentTime from t_ms_order
+        where status = #{status}
     </select>
 
     <update id="updateStatus">
@@ -11,7 +12,8 @@
     </update>
 
     <select id="getOrderById" resultType="com.mmling.mybatisRedisCache.entity.Order">
-        select id, user_name userName, amount, status, create_time createTime, payment_time paymentTime from t_ms_order where id = #{id}
+        select id, user_name userName, amount, status, create_time createTime, payment_time paymentTime from t_ms_order
+        where id = #{id}
     </select>
 
     <insert id="add" parameterType="com.mmling.mybatisRedisCache.entity.Order"
@@ -20,6 +22,7 @@
     </insert>
 
     <select id="selectByName" resultType="com.mmling.mybatisRedisCache.entity.Order">
-    select id, user_name userName, amount, status, create_time createTime, payment_time paymentTime from t_ms_order where user_name = #{userName}
-</select>
+        select id, user_name userName, amount, status, create_time createTime, payment_time paymentTime from t_ms_order
+        where user_name = #{userName}
+    </select>
 </mapper>

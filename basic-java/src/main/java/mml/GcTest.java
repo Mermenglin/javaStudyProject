@@ -34,7 +34,8 @@ public class GcTest {
 //        //而byteArr因为超过survivor的单个区域，直接进入了老年代。
 //        makeGarbage(32);
     }
-    private static void makeGarbage(int size){
+
+    private static void makeGarbage(int size) {
         byte[] byteArrTemp = new byte[size * 1024 * 1024];
     }
 }

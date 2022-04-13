@@ -26,6 +26,7 @@
         <module>springboot-rabbitmq-producer</module>
         <module>springboot-rabbitmq-consumer</module>
         <module>springboot-redis</module>
+        <module>springboot-kafka</module>
         <module>etcd-service-registry</module>
         <module>examination-java</module>
         <module>algorithmStudy</module>

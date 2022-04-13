@@ -1,0 +1,62 @@
+server:
+  port: 8080
+  undertow:
+    direct-buffers: true
+    threads:
+      worker: 450
+      io: 8
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initial-size: 10
+    max-active: 1000
+    max-idle: 20
+    min-idle: 5
+    url: jdbc:mysql://localhost:3306/scene_report_pre?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+  kafka:
+    bootstrap-servers: 192.168.56.103:9092
+    consumer:
+      auto-offset-reset: latest
+      enable-auto-commit: true
+      group-id: scene_report_pre
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      acks: 1
+      batch-size: 16384
+      properties:
+        linger:
+          ms: 0
+      retries: 0
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  redis:
+    host: 192.168.56.103
+    password: 123456
+    port: 6379
+    timeout: 5000
+mybatis:
+  configuration:
+    default-statement-timeout: 10
+  mapper-locations: classpath:mapper/*.xml
+org:
+  quartz:
+    jobStore:
+      class: org.quartz.impl.jdbcjobstore.JobStoreTX
+      clusterCheckinInterval: 5000
+      driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+      isClustered: true
+      tablePrefix: QRTZ_
+      txIsolationLevelReadCommitted: true
+      useProperties: false
+    scheduler:
+      instanceId: AUTO
+      instanceName: ClusterQuartz
+    threadPool:
+      class: org.quartz.simpl.SimpleThreadPool
+      threadCount: 5
+      threadPriority: 5
+logging:
+  config: classpath:log4j2.xml

@@ -21,7 +21,7 @@ public class ScheduledExecutorServiceTest {
         System.out.println("当前时间: " + new Date() + "n" +
                 "线程名称: " + Thread.currentThread().getName());
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(3);
-        long delay  = 1000L;
+        long delay = 1000L;
         long period = 1000L;
         executor.scheduleAtFixedRate(repeatedTask, delay, period, TimeUnit.MILLISECONDS);
         Thread.sleep(delay + period * 5);

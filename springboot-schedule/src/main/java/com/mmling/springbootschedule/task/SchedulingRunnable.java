@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2021-7-30 18:48
  */
 @Slf4j
-public class SchedulingRunnable  implements Runnable {
+public class SchedulingRunnable implements Runnable {
     private Cron cron;
     private ICronService service;
     private FixedRateRegistar fixedRateRegistar;

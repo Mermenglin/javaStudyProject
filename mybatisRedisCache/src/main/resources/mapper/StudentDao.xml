@@ -16,7 +16,7 @@
     <!--查询单个-->
     <select id="queryById" resultMap="StudentMap">
         select
-          id, age, sex, address, name
+        id, age, sex, address, name
         from student.student
         where id = #{id}
     </select>
@@ -24,7 +24,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="StudentMap">
         select
-          id, age, sex, address, name
+        id, age, sex, address, name
         from student.student
         limit #{offset}, #{limit}
     </select>

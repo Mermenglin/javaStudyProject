@@ -1,29 +1,34 @@
-server:
-  port: 8888
+#server:
+#  port: 8888
 
-jimi:
-  cloud:
-    whiteList:
-      - 2046651
+#jimi:
+#  cloud:
+#    whiteList:
+#      - 2046651
 
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: new-tsp
-          uri: http://172.26.20.116:8280
-          predicates:
-            - Path=/tsp/**
-            - name: MyReadBodyPredicateFactory
-            - Weight=group1, 5
-          filters:
-            - StripPrefix=1
-        - id: old-user
-          uri: http://172.26.20.116:8281
-          predicates:
-            - Path=/tsp/**
-          filters:
-            - StripPrefix=1
+app:
+  id: spring-cloud-gateway
+  # set apollo meta server address, adjust to actual address if necessary
+apollo:
+  meta: http://apollo-config.dev.jimiops.top
+
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: new-tsp
+#          uri: http://172.26.20.116:8280
+#          predicates:
+#            - Path=/tsp/**
+#            - name: MyReadBodyPredicateFactory
+#          filters:
+#            - StripPrefix=1
+#        - id: old-user
+#          uri: http://172.26.20.116:8281
+#          predicates:
+#            - Path=/tsp/**
+#          filters:
+#            - StripPrefix=1
 #        - id: route1
 #            uri: http://172.26.20.116:8280
 #            predicates:

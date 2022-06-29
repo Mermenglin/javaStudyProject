@@ -17,8 +17,7 @@
 
 package com.mml.springbootgatewaydemo.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
@@ -30,11 +29,10 @@ import java.util.List;
  * @date 2022-06-29
  * @since 1.0.0
  */
-@EnableConfigurationProperties
 @Configuration
-@ConfigurationProperties(prefix = "jimi.cloud")
 public class GatewayConfig {
 
+    @Value("#{${jimi.cloud.whiteList}}")
     private List<String> whiteList;
 
 

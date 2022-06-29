@@ -1,24 +1,51 @@
 server:
-  port: 88
+  port: 8888
+
+jimi:
+  cloud:
+    whiteList:
+      - 2046651
 
 spring:
   cloud:
     gateway:
       routes:
-        - id: test_route
-          uri: https://www.baidu.com
+        - id: new-tsp
+          uri: http://172.26.20.116:8280
           predicates:
-            - Path=/common
-            - Weight=group1, 2
+            - Path=/tsp/**
+            - name: MyReadBodyPredicateFactory
+            - Weight=group1, 5
           filters:
             - StripPrefix=1
-        - id: route2
-          uri: https://blog.csdn.net
+        - id: old-user
+          uri: http://172.26.20.116:8281
           predicates:
-            - Path=/common
-            - Weight=group1, 8
+            - Path=/tsp/**
           filters:
             - StripPrefix=1
+#        - id: route1
+#            uri: http://172.26.20.116:8280
+#            predicates:
+#              - Path=/tsp/**
+#            filters:
+#              - StripPrefix=1
+#        - id: test_route
+#          uri: https://hk-test.tracksolidpro.com
+#          predicates:
+#            - name: MyReadBodyPredicateFactory
+#            - Path=/gateway
+#            - Weight=group1, 5
+#          filters:
+#            - StripPrefix=1
+#        - id: route2
+#          uri: https://eu-test.tracksolidpro.com/
+#          predicates:
+#            - Path=/gateway/**
+#            - Weight=group1, 5
+#            - name: MyReadBodyPredicateFactory
+#          filters:
+#            - StripPrefix=1
 
 # 访问路径：localhost:88/hello?url=baidu 代表跳转到www.baidu.com/hello
 # url带有baidu的自动跳转到https://www.baidu.com

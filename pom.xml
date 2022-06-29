@@ -35,6 +35,9 @@
         <module>basic-java</module>
         <module>poi-test</module>
         <module>mockito-demo</module>
+        <module>springboot2.7-demo</module>
+        <module>springboot-mybatisplus-demo</module>
+        <module>mybatis-generator-demo</module>
     </modules>
 
 </project>

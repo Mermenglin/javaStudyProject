@@ -1,0 +1,26 @@
+server:
+  port: 88
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test_route
+          uri: https://www.baidu.com
+          predicates:
+            - Path=/common
+            - Weight=group1, 2
+          filters:
+            - StripPrefix=1
+        - id: route2
+          uri: https://blog.csdn.net
+          predicates:
+            - Path=/common
+            - Weight=group1, 8
+          filters:
+            - StripPrefix=1
+
+# 访问路径：localhost:88/hello?url=baidu 代表跳转到www.baidu.com/hello
+# url带有baidu的自动跳转到https://www.baidu.com
+# - Query=url,baidu
+#  StripPrefix=1，表示去掉前缀，去掉1个前缀

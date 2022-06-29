@@ -3,6 +3,7 @@ package com.conver.controller;
 import com.conver.DTO.UserDTO;
 import com.conver.entity.User;
 import com.conver.service.UserService;
+import com.conver.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -33,6 +34,16 @@ public class UserController {
         // 将内部对象转成出参类
         UserDTO result = userDTO.convertFor(saveResultUser);
         return result;
+    }
+
+    public static void main(String[] args) {
+        UserDTO u1 = new UserDTO();
+        u1.setUserName("name");
+        UserDTO u2 = new UserDTO();
+        u2.setAge("age");
+
+        BeanUtils.copyPropertiesIgnoreNullProperty(u1, u2);
+        System.out.println(u2.getUserName());
     }
 
     private void checkDTOParams(BindingResult bindingResult) {

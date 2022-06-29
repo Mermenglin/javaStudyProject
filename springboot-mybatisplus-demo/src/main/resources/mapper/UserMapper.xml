@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mml.springbootmybatisplusdemo.dao.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.mml.springbootmybatisplusdemo.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="phone" jdbcType="INTEGER" property="phone"/>
+    </resultMap>
+
+    <delete id="deleteIn">
+        delete from d_user where id in
+        <foreach collection="collection" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="seleteAll" resultType="com.mml.springbootmybatisplusdemo.entity.User">
+        select *
+        from d_user a
+                 left join d_user b on a.id = b.id
+    </select>
+
+
+    <select id="seleteByPw" resultType="com.mml.springbootmybatisplusdemo.entity.User">
+        select *
+        from d_user
+        where password = HEX(AES_ENCRYPT("lisi", 'a001s6Ha92nU81ju'))
+    </select>
+
+    <select id="getById" resultMap="BaseResultMap">
+        select *
+        from d_user
+        where id = #{id}
+    </select>
+
+    <select id="selectByUser" parameterType="com.mml.springbootmybatisplusdemo.entity.User" resultMap="BaseResultMap">
+        select * from d_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByAccounts" resultType="com.mml.springbootmybatisplusdemo.entity.User">
+        select * from d_user
+        where account in
+        <foreach collection="accounts"  item="val" separator="," open="(" close=")">
+            #{val}
+        </foreach>
+    </select>
+
+    <update id="updateById_bak" parameterType="com.mml.springbootmybatisplusdemo.entity.User">
+        update d_user
+        <set>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="account != null">
+                account = #{account},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <update id="updateByAccount">
+        update d_user set age = #{age} where account = #{account}
+    </update>
+</mapper>

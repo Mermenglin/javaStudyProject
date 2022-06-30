@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 /**
- * TODO
+ * 配置项，Apollo 配置
  *
  * @author Mei.Mengling
  * @date 2022-06-29

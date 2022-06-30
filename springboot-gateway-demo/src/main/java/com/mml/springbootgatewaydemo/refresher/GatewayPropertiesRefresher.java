@@ -37,7 +37,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 /**
- * TODO
+ * gateway 动态路由刷新，监听 apollo 配置变化情况
  *
  * @author Mei.Mengling
  * @date 2022-06-29

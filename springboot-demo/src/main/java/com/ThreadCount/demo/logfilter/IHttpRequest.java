@@ -1,4 +1,4 @@
-package com.ThreadCount.demo.filter;
+package com.ThreadCount.demo.logfilter;
 
 public interface IHttpRequest {
     String localHost();

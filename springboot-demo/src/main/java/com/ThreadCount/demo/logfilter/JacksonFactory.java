@@ -1,4 +1,4 @@
-package com.ThreadCount.demo.filter;
+package com.ThreadCount.demo.logfilter;
 
 public class JacksonFactory implements JsonFactory {
     private static final JacksonFactory FACTORY = new JacksonFactory();

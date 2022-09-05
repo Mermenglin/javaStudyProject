@@ -1,4 +1,4 @@
-package com.ThreadCount.demo.filter;
+package com.ThreadCount.demo.logfilter;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.WriteListener;

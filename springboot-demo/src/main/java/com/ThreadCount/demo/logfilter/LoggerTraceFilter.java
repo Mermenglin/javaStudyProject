@@ -1,4 +1,4 @@
-package com.ThreadCount.demo.filter;
+package com.ThreadCount.demo.logfilter;
 
 import com.util.RandomUtil;
 import org.slf4j.LoggerFactory;

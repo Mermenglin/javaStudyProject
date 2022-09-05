@@ -1,4 +1,4 @@
-package com.ThreadCount.demo.filter;
+package com.ThreadCount.demo.logfilter;
 
 import java.util.List;
 import java.util.Map;

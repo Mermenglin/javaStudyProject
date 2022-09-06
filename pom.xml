@@ -38,6 +38,7 @@
         <module>springboot2.7-demo</module>
         <module>springboot-mybatisplus-demo</module>
         <module>mybatis-generator-demo</module>
+        <module>store-support</module>
     </modules>
 
 </project>

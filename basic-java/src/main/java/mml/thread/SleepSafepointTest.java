@@ -21,7 +21,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * sleep是一个本地方法，结束时，会检查其他线程有没有在安全点
+ * <p>
  * int 时，for循环内部没有安全点， 主线程会等到for循环结束，进入安全点
+ * int类型或范围更小的数据类型产生的循环被称为可数循环，默认是不会被放置安全点的。
+ * <p>
  * long时，for循环内部会放置安全点，主线程在sleep结束后，就可以结束
  *
  * @author Mei.Mengling
@@ -33,12 +36,12 @@ public class SleepSafepointTest {
     public static AtomicInteger num = new AtomicInteger(0);
 
     public static void main(String[] args) throws InterruptedException {
-        Runnable runnable=()->{
+        Runnable runnable = () -> {
 //            for (int i = 0; i < 1000000000; i++) {
             for (long i = 0; i < 1000000000; i++) {
                 num.getAndAdd(1);
             }
-            System.out.println(Thread.currentThread().getName()+"执行结束!");
+            System.out.println(Thread.currentThread().getName() + "执行结束!");
         };
 
         Thread t1 = new Thread(runnable);

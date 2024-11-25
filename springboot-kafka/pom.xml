@@ -6,7 +6,6 @@
     <!--        <groupId>org.springframework.boot</groupId>-->
     <!--        <artifactId>spring-boot-starter-parent</artifactId>-->
     <!--        <version>1.5.6.RELEASE</version>-->
-    <!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     <!--    </parent>-->
     <groupId>com.mml</groupId>
     <artifactId>springboot-kafka</artifactId>
@@ -64,7 +63,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <!--            <version>8.0.22</version>-->
+            <version>8.0.22</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -88,6 +87,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -97,23 +97,74 @@
         </dependency>
     </dependencies>
 
+    <!--    <dependencyManagement>-->
+    <!--        <dependencies>-->
+    <!--            <dependency>-->
+    <!--                <groupId>com.midea.framework</groupId>-->
+    <!--                <artifactId>framework-dependencies</artifactId>-->
+    <!--                <version>${framework.version}</version>-->
+    <!--                <scope>import</scope>-->
+    <!--                <type>pom</type>-->
+    <!--            </dependency>-->
+    <!--        </dependencies>-->
+    <!--    </dependencyManagement>-->
+
+    <!--    手动指定版本，也可以在单独项目中定义版本，然后项目中引用，按上面注释的方式 -->
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.midea.framework</groupId>
-                <artifactId>framework-dependencies</artifactId>
-                <version>${framework.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-undertow</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-log4j2</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>4.4.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 设置可执行 Jar -->
+                    <executable>true</executable>
+                    <!-- 禁用 devtools 重启功能 -->
+                    <excludeDevtools>true</excludeDevtools>
+                </configuration>
             </plugin>
         </plugins>
     </build>

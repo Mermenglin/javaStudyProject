@@ -39,6 +39,7 @@
         <module>springboot-mybatisplus-demo</module>
         <module>mybatis-generator-demo</module>
         <module>store-support</module>
+        <module>test-game</module>
     </modules>
 
 </project>
